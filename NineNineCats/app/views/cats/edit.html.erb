@@ -1,0 +1,28 @@
+<form action=<%=cat_url  %> method="post">
+  <input type="hidden" name ="_method" value="patch">
+  <label for="cat[name]">Name </label>
+  <input type="text" name="cat[name]" value="<%=@cat.name%>">
+  <br>
+
+  <input type="radio" name="cat[sex]" id="cat_sex_female" value = "F" <%="checked='checked'" if @cat.sex == 'F' %>>
+  <label for="cat_sex_female">Female</label>
+  <input type="radio" name="cat[sex]" id="cat_sex_male" value = "M" <%="checked='checked'" if @cat.sex == 'M' %>>
+  <label for="cat_sex_male">Male</label>
+
+  <br>
+  <label for="cat[color]">Color</label>
+  <select name="cat[color]">
+    <option value="Black" <%="selected" if @cat.color == 'Black'%>>Black</option>
+    <option value="White" <%="selected" if @cat.color == 'White'%>>White</option>
+    <option value="Orange" <%="selected" if @cat.color == 'Orange'%>>Orange</option>
+    <option value="Yellow" <%="selected" if @cat.color == 'Yellow'%>>Yellow</option>
+  </select>
+  <br>
+  <label for="cat[birth_date]">Birth Date</label>
+  <input type="date" name = "cat[birth_date]" value=<%=@cat.birth_date%>>
+  <br>
+  <label for="cat[description]">Description</label>
+  <textarea name="cat[description]" id="cat_description"><%= @cat.description %></textarea>
+  <br>
+  <input type="submit" value="Edit cat">
+</form>
