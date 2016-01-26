@@ -1,3 +1,5 @@
+<form action=<%=action == :edit ? "cat_url" : "cats_url"%> method="post">
+<%="<input type=\"hidden\" name =\"_method\" value=\"patch\">".html_safe if action == :edit %>
   <label for="cat[name]">Name </label>
   <input type="text" name="cat[name]" value="<%=cat.name%>">
   <br>
@@ -22,4 +24,5 @@
   <label for="cat[description]">Description</label>
   <textarea name="cat[description]" id="cat_description"><%= cat.description %></textarea>
   <br>
+  <input type="submit" value="<%=action == :edit ? "Edit Cat" : "New Cat"%>">
 </form>
