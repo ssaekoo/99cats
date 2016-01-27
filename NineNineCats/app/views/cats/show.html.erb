@@ -8,3 +8,11 @@
     <td><%= @cat.description %></td>
   </tr>
 </table>
+<br>
+
+<table style="width: 50%">
+  <% @cat.cat_rental_requests.each do |rental| %>
+    <%= "Start Date: " + rental.start_date.to_s + " End Date: " + rental.end_date.to_s %>
+    <br>
+  <% end %>
+<table>

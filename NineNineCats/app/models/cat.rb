@@ -6,7 +6,7 @@
 #  birth_date  :date             not null
 #  color       :string           not null
 #  name        :string           not null
-#  sex         :string           not null
+#  sex         :string(1)        not null
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
@@ -24,4 +24,6 @@ class Cat <ActiveRecord::Base
     DateTime.now.year - birth_date.year
   end
 
+  has_many :cat_rental_requests,
+    :dependent => :destroy
 end

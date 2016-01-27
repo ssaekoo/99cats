@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: cats
+#
+#  id          :integer          not null, primary key
+#  birth_date  :date             not null
+#  color       :string           not null
+#  name        :string           not null
+#  sex         :string(1)        not null
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class CatsController < ApplicationController
   def index
     @cat = Cat.all
@@ -5,16 +19,17 @@ class CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find_by(id: params[:id])
+    @cat = Cat.find(params[:id])
+    @catrentals = CatRentalRequest.where(cat_id: params[:id])
     if @cat
       render :show
     else
-      redirect_to cat_url
+      render json: "cat doesn't exist", status: :not_found
     end
   end
 
   def new
-    @cat = Cat.new 
+    @cat = Cat.new
     render :new
   end
 
@@ -29,7 +44,7 @@ class CatsController < ApplicationController
   end
 
   def edit
-    @cat = Cat.find_by(id: params[:id])
+    @cat = Cat.find(params[:id])
   end
 
   def update
